@@ -1,9 +1,6 @@
 '''
-input the result of slice_video.py, and divide the data corresponding to each video. 
-the input shape is (5, 62, 101000)
-there are two output files: 
-    1. watching data: (5, 50, 62, 400)
-    2. imaging data: (5, 50, 62, 600)
+divide the watching and imaging data corresponding to each clip in each video.
+input data from slice_video.py
 '''
 
 import numpy as np
@@ -18,6 +15,16 @@ watching_file = os.getenv("video_division_watching_file")
 imaging_file = os.getenv("video_division_imaging_file")
 
 def divide_watch_image(input_file):
+    '''used to divide the watching and imaging data corresponding to each clip in each video.
+    Args:
+        input_file: the input file of slice_video.py, shape is (5, 62, 505*200)
+            5: 5 videos, 62: 62 electrodes, 505*200: 505 seconds * 200 Hz
+    Returns:
+        watching_data: the watching data corresponding to each video, shape is (5, 50, 62, 2*200)
+            5: 5 videos, 50: 50 clips per video, 62: 62 electrodes, 400: 2*200: 2 seconds * 200 Hz
+        imaging_data: the imaging data corresponding to each video, shape is (5, 50, 62, 3*200)
+            5: 5 videos, 50: 50 clips per video, 62: 62 electrodes, 600: 3*200: 3 seconds * 200 Hz
+    '''
     watching_start = np.array([i+5 for i in range(0, 500, 10)])
     watching_range = zip(watching_start, watching_start+2)
     imaging_start = watching_start + 4

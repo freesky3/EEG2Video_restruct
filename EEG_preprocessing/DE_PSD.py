@@ -1,6 +1,5 @@
 '''
-compute the differential entropy(DE) and power spectral density(PSD) of EEG signal
-
+compute the differential entropy(DE) and power spectral density(PSD) of EEG data. 
 '''
 
 
@@ -21,7 +20,7 @@ def DE_PSD(data, time_win, fre=200, STFTN = 200, freq_band = freq_band):
     compute the differential entropy(DE) and power spectral density(PSD) of EEG signal
     
     args:
-    data: EEG signal, (num_electrodes=62, num_samples)
+    data: EEG signal, (505*200)
     fre: sampling frequency
     time_win: time window for calculating PSD
     STFTN: number of points for Short-Time Fourier, which will influence the frequency resolution
@@ -39,9 +38,11 @@ def DE_PSD(data, time_win, fre=200, STFTN = 200, freq_band = freq_band):
     fStartNum = (fStart/fre*STFTN).astype(int)
     fEndNum = (fEnd/fre*STFTN).astype(int)
 
+    # calculate Hann window for smoothing
     Hlength = int(time_win*fre)
     Hwindow = np.hanning(Hlength)
-
+    # reshape data into (num_electrodes, num_samples)
+    data = data.reshape(505, 200)
     num_electrodes = data.shape[0]
     psd = np.zeros((num_electrodes, len(freq_band)))
     de = np.zeros((num_electrodes, len(freq_band)))
@@ -53,6 +54,7 @@ def DE_PSD(data, time_win, fre=200, STFTN = 200, freq_band = freq_band):
         # input of fft is real signal, so only need to calculate half of the spectrum
         magFFTdata = abs(FFTdata[0:int(STFTN/2)])
 
+        # calculate PSD DE
         for p in range(0,len(freq_band)):
             E = 0
             for p0 in range(fStartNum[p],fEndNum[p]+1):

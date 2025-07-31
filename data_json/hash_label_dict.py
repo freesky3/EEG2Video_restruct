@@ -4,30 +4,30 @@ each video file's hash value will correspond to a label
 '''
 
 '''
-自然景观：
-    动物：1
-    植物：2
-    水：3
-    山脉：4
-    天气：5
-人类行为： 
-    笑容：6
-    跑步：7
-    看书：8
-    交谈：9
-    吃饭：10
-人造物品：
-    电子产品：11
-    家具：12
-    交通工具：13
-    衣物：14
-    娱乐用品：15
-复合场景：
-    会议：16
-    节日：17
-    竞赛：18
-    游行：19
-    灾难：20
+自然景观 (Natural Landscape):
+    动物 (Animals): 1
+    植物 (Plants): 2
+    水 (Water): 3
+    山脉 (Mountains): 4
+    天气 (Weather): 5
+人类行为 (Human Activities): 
+    笑容 (Smiling): 6
+    跑步 (Running): 7
+    看书 (Reading): 8
+    交谈 (Conversation): 9
+    吃饭 (Eating): 10
+人造物品 (Man-made Objects):
+    电子产品 (Electronics): 11
+    家具 (Furniture): 12
+    交通工具 (Vehicles): 13
+    衣物 (Clothing): 14
+    娱乐用品 (Recreational Items): 15
+复合场景 (Complex Scenes):
+    会议 (Meeting): 16
+    节日 (Festival): 17
+    竞赛 (Competition): 18
+    游行 (Parade): 19
+    灾难 (Disaster): 20
 '''
 
 
@@ -51,6 +51,7 @@ video2_hash = get_file_hash(os.getenv("hash_label_dict_video2_hash"))
 
 dict1 = {}
 
+# generate label for each video's hash value
 file_path1 = os.getenv("hash_label_file_path1")
 for file in os.listdir(file_path1):
     if os.path.basename(file).split(".")[0].split("-")[-1] in [str(i) for i in range(1, 11)]:

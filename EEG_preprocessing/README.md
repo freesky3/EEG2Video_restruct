@@ -20,10 +20,10 @@ graph TD
 	C---|extract_DE_PSD.py|F
 	D---|extract_DE_PSD.py|G
 	D---|extract_DE_PSD.py|H
-	E---|concat_watch_image.py|I
-	F---|concat_watch_image.py|I
-	G---|concat_watch_image.py|J
-	H---|concat_watch_image.py|J
+	E---|concat_PSD_DE.py|I
+	F---|concat_PSD_DE.py|I
+	G---|concat_PSD_DE.py|J
+	H---|concat_PSD_DE.py|J
 	I---|features|L
 	J---|features|M
 	K---|label|L

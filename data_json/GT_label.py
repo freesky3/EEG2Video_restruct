@@ -1,35 +1,35 @@
 '''
 generate GT_label.npy
 GT_label.npy is a (5, 50) numpy array, 
-where 5 is the number of groups, 50 is the number of videos in each group, 
+5 videos per experiment, 50 clips per video, each clips is 2 seconds long.
 and each element is the label of the corresponding video.
 '''
 
 '''
-自然景观：
-    动物：1
-    植物：2
-    水：3
-    山脉：4
-    天气：5
-人类行为： 
-    笑容：6
-    跑步：7
-    看书：8
-    交谈：9
-    吃饭：10
-人造物品：
-    电子产品：11
-    家具：12
-    交通工具：13
-    衣物：14
-    娱乐用品：15
-复合场景：
-    会议：16
-    节日：17
-    竞赛：18
-    游行：19
-    灾难：20
+自然景观 (Natural Landscape):
+    动物 (Animals): 1
+    植物 (Plants): 2
+    水 (Water): 3
+    山脉 (Mountains): 4
+    天气 (Weather): 5
+人类行为 (Human Activities): 
+    笑容 (Smiling): 6
+    跑步 (Running): 7
+    看书 (Reading): 8
+    交谈 (Conversation): 9
+    吃饭 (Eating): 10
+人造物品 (Man-made Objects):
+    电子产品 (Electronics): 11
+    家具 (Furniture): 12
+    交通工具 (Vehicles): 13
+    衣物 (Clothing): 14
+    娱乐用品 (Recreational Items): 15
+复合场景 (Complex Scenes):
+    会议 (Meeting): 16
+    节日 (Festival): 17
+    竞赛 (Competition): 18
+    游行 (Parade): 19
+    灾难 (Disaster): 20
 '''
 
 import numpy as np

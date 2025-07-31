@@ -1,3 +1,7 @@
+'''
+this script is used to concatenate PSD and DE data from extract_DE_PSD.py
+'''
+
 import numpy as np
 import os
 from tqdm import tqdm
@@ -8,6 +12,13 @@ watching_path = os.getenv('concat_watch_image_watching_path')
 image_path = os.getenv('concat_watch_image_imaging_path')
 
 def concat_watch_image(path):
+    '''
+    Args:
+        path: PSD path of watching or imaging data, used to load data from extract_DE_PSD.py
+    Save: 
+        PSD_DE data: concatenated PSD and DE data, (2, 5, 50, 62, 5)
+            2: PSD and DE data, 5: 5 videos, 50: 50 clips, 62: 62 electrodes, 5: 5 frequency bands
+    '''
     PSD_path = os.path.join(path, 'PSD')
     DE_path = os.path.join(path, 'DE')
     for file in tqdm(os.listdir(PSD_path)):
